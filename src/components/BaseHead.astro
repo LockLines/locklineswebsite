@@ -36,3 +36,11 @@ const { title, description, image = '/og-image.png' } = Astro.props;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+<!-- Privacy-friendly analytics by Plausible -->
+<script defer data-domain="locklines.app" src="https://analytics.locklines.app/js/script.outbound-links.tagged-events.js"></script>
+<script type="module">
+window.plausible = window.plausible || function() {
+    (window.plausible.q = window.plausible.q || []).push(arguments)
+};
+</script>
