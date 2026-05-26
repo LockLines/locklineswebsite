@@ -1,0 +1,82 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import {
+	APP_STORE_APPROVED,
+	APP_STORE_ID,
+	APP_STORE_URL,
+	FAQ_ITEMS,
+	SITE_TITLE,
+	SUPPORT_EMAIL,
+} from "../consts";
+
+const pageTitle = `FAQ - ${SITE_TITLE}`;
+const pageDescription =
+	"Frequently asked questions about LockLines, the macOS app for designing plain-text lock screen messages.";
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={pageTitle} description={pageDescription} />
+	</head>
+	<body>
+		<header class="site-header">
+			<nav class="nav shell" aria-label="Main navigation">
+				<a class="brand" href="/" aria-label="LockLines home">
+					<img src="/app-icon.png" alt="" width="44" height="44" />
+					<span>LockLines</span>
+				</a>
+				<div class="nav-links">
+					<a href="/">Home</a>
+					<a href="/support/">Support</a>
+					<a href="/privacy-policy/">Privacy</a>
+				</div>
+				<a class="nav-support" href={`mailto:${SUPPORT_EMAIL}`}>Email support</a>
+			</nav>
+		</header>
+
+		<main class="page-main">
+			<section class="page-hero shell">
+				<h1>LockLines FAQ</h1>
+				<p>
+					Answers for the macOS lock screen message workflow, setup, App Store
+					availability, and support.
+				</p>
+			</section>
+
+			<section class="shell faq-list" aria-label="Frequently asked questions">
+				{FAQ_ITEMS.map((item) => (
+					<article class="faq-item">
+						<h2>{item.question}</h2>
+						<p>{item.answer}</p>
+					</article>
+				))}
+			</section>
+
+			<section class="shell support-callout">
+				<div>
+					<h2>Still need help?</h2>
+					<p>
+						Send the macOS version, LockLines version, and a short description of
+						what happened.
+					</p>
+				</div>
+				<a class="button secondary" href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
+			</section>
+
+			<section class="shell app-store-note">
+				<h2>Mac App Store status</h2>
+				<p>
+					{
+						APP_STORE_APPROVED
+							? "LockLines is available on the Mac App Store."
+							: "LockLines is pending Apple approval, so the public listing may not open yet."
+					}
+				</p>
+				<p>
+					App id: {APP_STORE_ID}. Future listing URL: <a href={APP_STORE_URL}>{APP_STORE_URL}</a>.
+				</p>
+			</section>
+		</main>
+	</body>
+</html>

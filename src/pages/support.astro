@@ -1,0 +1,72 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import { DEVELOPER, SITE_TITLE, SUPPORT_EMAIL } from "../consts";
+
+const pageTitle = `Support - ${SITE_TITLE}`;
+const pageDescription =
+	"Contact LockLines support and get help with macOS lock screen message setup.";
+
+const supportTips = [
+	"Your macOS version",
+	"The LockLines version you are using",
+	"What you typed or copied, if you are comfortable sharing it",
+	"A screenshot of the LockLines preview or System Settings message dialog",
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={pageTitle} description={pageDescription} />
+	</head>
+	<body>
+		<header class="site-header">
+			<nav class="nav shell" aria-label="Main navigation">
+				<a class="brand" href="/" aria-label="LockLines home">
+					<img src="/app-icon.png" alt="" width="44" height="44" />
+					<span>LockLines</span>
+				</a>
+				<div class="nav-links">
+					<a href="/">Home</a>
+					<a href="/faq/">FAQ</a>
+					<a href="/privacy-policy/">Privacy</a>
+				</div>
+				<a class="nav-support" href={`mailto:${SUPPORT_EMAIL}`}>Email support</a>
+			</nav>
+		</header>
+
+		<main class="page-main">
+			<section class="page-hero shell">
+				<h1>Support</h1>
+				<p>
+					For LockLines help, email <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.
+				</p>
+			</section>
+
+			<section class="shell support-grid">
+				<article class="support-panel">
+					<h2>Include this in your message</h2>
+					<ul>
+						{supportTips.map((tip) => <li>{tip}</li>)}
+					</ul>
+				</article>
+				<article class="support-panel">
+					<h2>Lock screen setup reminder</h2>
+					<p>
+						After copying from LockLines, open System Settings, go to Lock Screen,
+						enable Show Message When Locked, choose Set, paste the message, and save.
+					</p>
+				</article>
+				<article class="support-panel">
+					<h2>Developer</h2>
+					<p>{DEVELOPER.blurb}</p>
+					<div class="developer-links compact-links">
+						{DEVELOPER.links.map((link) => (
+							<a href={link.href} target="_blank" rel="noreferrer">{link.label}</a>
+						))}
+					</div>
+				</article>
+			</section>
+		</main>
+	</body>
+</html>

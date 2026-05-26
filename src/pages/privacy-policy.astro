@@ -1,0 +1,78 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import { SITE_TITLE, SUPPORT_EMAIL } from "../consts";
+
+const pageTitle = `Privacy Policy - ${SITE_TITLE}`;
+const pageDescription =
+	"Privacy policy for the LockLines website and Mac app. The website uses cookie-free Plausible Analytics, and the app works offline with no telemetry.";
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={pageTitle} description={pageDescription} />
+	</head>
+	<body>
+		<header class="site-header">
+			<nav class="nav shell" aria-label="Main navigation">
+				<a class="brand" href="/" aria-label="LockLines home">
+					<img src="/app-icon.png" alt="" width="44" height="44" />
+					<span>LockLines</span>
+				</a>
+				<div class="nav-links">
+					<a href="/">Home</a>
+					<a href="/faq/">FAQ</a>
+					<a href="/support/">Support</a>
+				</div>
+				<a class="nav-support" href={`mailto:${SUPPORT_EMAIL}`}>Email support</a>
+			</nav>
+		</header>
+
+		<main class="page-main">
+			<section class="page-hero shell">
+				<h1>Privacy Policy</h1>
+				<p>
+					LockLines is built with a privacy-first approach. The website collects
+					no personal or identifiable data, and the Mac app works offline.
+				</p>
+			</section>
+
+			<section class="shell policy-content" aria-label="Privacy policy details">
+				<article class="policy-panel">
+					<h2>Website Analytics</h2>
+					<p>
+						The LockLines website uses Plausible Analytics, a privacy-friendly,
+						cookie-free analytics tool. Plausible does not track individual visitors,
+						use cookies, or share data with third parties.
+					</p>
+					<p>
+						No personal identifiers are stored or collected. The website does not use
+						tracking scripts, ads, or cross-site data collection. Analytics data is
+						aggregated and anonymized for statistical purposes only, such as the
+						number of visits.
+					</p>
+				</article>
+
+				<article class="policy-panel">
+					<h2>Mac App Privacy</h2>
+					<p>
+						The LockLines Mac app works offline and transmits no data. It has no
+						telemetry, no analytics, and no background tracking.
+					</p>
+					<p>
+						LockLines prepares plain-text lock screen messages locally on your Mac.
+						Your message text stays on your device unless you decide to share it
+						yourself.
+					</p>
+				</article>
+
+				<article class="policy-panel">
+					<h2>Contact</h2>
+					<p>
+						For privacy questions or support, email <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.
+					</p>
+				</article>
+			</section>
+		</main>
+	</body>
+</html>

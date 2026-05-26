@@ -1,6 +1,6 @@
 {
 	"name": "locklineswebsite",
-	"description": "Build a personal website, blog, or portfolio with Astro.",
+	"description": "Website for LockLines, a macOS lock screen message designer.",
 	"cloudflare": {
 		"label": "Astro Framework Starter",
 		"products": [

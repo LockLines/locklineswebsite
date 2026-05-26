@@ -1,21 +1,221 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import BaseHead from "../components/BaseHead.astro";
+import {
+	APP_STORE_APPROVED,
+	APP_STORE_ID,
+	APP_STORE_URL,
+	DEVELOPER,
+	SCREENSHOTS,
+	SITE_DESCRIPTION,
+	SITE_TITLE,
+	SUPPORT_EMAIL,
+} from "../consts";
 
 const year = new Date().getFullYear();
+const pageTitle = `${SITE_TITLE} - Mac lock screen messages that fit`;
+const navItems = [
+	{ label: "Features", href: "#features" },
+	{ label: "Screenshots", href: "#screenshots" },
+	{ label: "FAQ", href: "/faq/" },
+	{ label: "Support", href: "/support/" },
+];
+
+const workflow = [
+	{
+		title: "Write the first screen message",
+		copy: "Shape the visible message people see before they scroll, such as a return prompt or owner contact teaser.",
+	},
+	{
+		title: "Add scroll-down details",
+		copy: "Add the longer owner note, pickup instructions, asset label, or test-machine details that appear after scrolling.",
+	},
+	{
+		title: "Preview both states",
+		copy: "Switch between visible and scroll previews so the lock screen layout is understandable before you copy anything.",
+	},
+	{
+		title: "Copy for System Settings",
+		copy: "Copy the complete plain-text message and paste it into macOS Lock Screen settings.",
+	},
+];
+
+const useCases = [
+	"Lost Mac return instructions",
+	"Owner contact notes",
+	"School and office asset labels",
+	"Conference or demo machines",
+	"Repair intake or lab devices",
+	"Scroll-down prompts for longer messages",
+];
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead title={pageTitle} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
+		<header class="site-header">
+			<nav class="nav shell" aria-label="Main navigation">
+				<a class="brand" href="/" aria-label="LockLines home">
+					<img src="/app-icon.png" alt="" width="44" height="44" />
+					<span>LockLines</span>
+				</a>
+				<div class="nav-links">
+					{navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+				</div>
+				<a class="nav-support" href={`mailto:${SUPPORT_EMAIL}`}>Email support</a>
+			</nav>
+		</header>
+
 		<main>
-			<img class="logo" src="/logo.svg" alt="LockLines logo" width="610" height="754" />
-			<h1 class="title">LockLines</h1>
-			<p class="tagline">Coming soon.</p>
+			<section class="hero section-pad">
+				<div class="shell hero-grid">
+					<div class="hero-copy">
+						<img class="hero-icon" src="/app-icon.png" alt="" width="112" height="112" />
+						<h1>Design Mac lock screen messages that fit.</h1>
+						<p class="lead">
+							LockLines creates plain-text messages for macOS lock screens. Preview
+							what appears first, add scroll-down details, decorate the text, and copy
+							a message ready for System Settings.
+						</p>
+						<div class="button-row">
+							{
+								APP_STORE_APPROVED ? (
+									<a class="button primary" href={APP_STORE_URL}>Download LockLines</a>
+								) : (
+									<span class="button primary disabled" aria-disabled="true">
+										Coming soon on the Mac App Store
+									</span>
+								)
+							}
+							<a class="button secondary" href="/support/">Contact support</a>
+						</div>
+						<p class="store-note">
+							Mac App Store app id {APP_STORE_ID}. The listing is pending Apple approval.
+						</p>
+					</div>
+
+					<div class="hero-shot" aria-label="LockLines app screenshot">
+						<img
+							src={SCREENSHOTS.copy}
+							alt="LockLines copy screen showing the final lock screen message and lock screen preview"
+							width="1792"
+							height="1304"
+						/>
+					</div>
+				</div>
+			</section>
+
+			<section class="intro-band">
+				<div class="shell split">
+					<div>
+						<h2>Built for the small message area macOS gives you.</h2>
+					</div>
+					<p>
+						Use LockLines for owner notes, contact information, asset labels,
+						test machines, shared Macs, or any message that needs to be readable
+						before someone reaches the desktop.
+					</p>
+				</div>
+			</section>
+
+			<section class="section-pad" id="features">
+				<div class="shell">
+					<div class="section-heading">
+						<h2>From message idea to paste-ready text</h2>
+						<p>
+							The app follows the same workflow shown in the screenshots: visible
+							text, scroll text, preview, copy.
+						</p>
+					</div>
+					<div class="workflow-grid">
+						{workflow.map((item, index) => (
+							<article class="feature-card">
+								<span>{String(index + 1).padStart(2, "0")}</span>
+								<h3>{item.title}</h3>
+								<p>{item.copy}</p>
+							</article>
+						))}
+					</div>
+				</div>
+			</section>
+
+			<section class="section-pad dark-panel" id="screenshots">
+				<div class="shell">
+					<div class="section-heading invert">
+						<h2>Preview the exact lock screen states</h2>
+						<p>
+							LockLines separates the first visible message from the scrollable
+							details, then shows both inside a lock screen preview.
+						</p>
+					</div>
+					<div class="screenshot-grid">
+						<figure>
+							<img src={SCREENSHOTS.visible} alt="Visible message editor with lock screen preview" />
+							<figcaption>First-screen message with repeated-character border controls.</figcaption>
+						</figure>
+						<figure>
+							<img src={SCREENSHOTS.scroll} alt="Scroll text editor with lock screen preview" />
+							<figcaption>Scrollable message details with styled plain-text boxes.</figcaption>
+						</figure>
+						<figure class="wide">
+							<img src={SCREENSHOTS.intro} alt="LockLines intro screen with app explanation" />
+							<figcaption>Intro walkthrough explaining the plain-text lock screen workflow.</figcaption>
+						</figure>
+					</div>
+				</div>
+			</section>
+
+			<section class="section-pad">
+				<div class="shell use-case-layout">
+					<div class="section-heading compact">
+						<h2>Useful anywhere a locked Mac needs context</h2>
+						<p>
+							A good lock screen message can turn a found device, a shared asset,
+							or a test machine into something understandable.
+						</p>
+					</div>
+					<ul class="use-case-list">
+						{useCases.map((item) => <li>{item}</li>)}
+					</ul>
+				</div>
+			</section>
+
+			<section class="section-pad developer-section">
+				<div class="shell developer-card">
+					<div>
+						<h2>Made by the developer of Parall, DockLock Lite, and App Trust Preview.</h2>
+						<p>
+							{DEVELOPER.blurb} The same developer also builds Parall, DockLock Lite,
+							and App Trust Preview for Mac users who care about predictable native utilities.
+						</p>
+					</div>
+					<div class="developer-links" aria-label="Developer apps">
+						{DEVELOPER.links.map((link) => (
+							<a href={link.href} target="_blank" rel="noreferrer">{link.label}</a>
+						))}
+					</div>
+				</div>
+			</section>
 		</main>
-		<footer>&copy; {year} LockLines</footer>
+
+		<footer class="site-footer">
+			<div class="shell footer-grid">
+				<div>
+					<a class="brand footer-brand" href="/">
+						<img src="/app-icon.png" alt="" width="36" height="36" />
+						<span>LockLines</span>
+					</a>
+					<p>&copy; {year} {DEVELOPER.name}. All rights reserved.</p>
+				</div>
+				<nav aria-label="Footer navigation">
+					<a href="/faq/">FAQ</a>
+					<a href="/support/">Support</a>
+					<a href="/privacy-policy/">Privacy Policy</a>
+					<a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
+				</nav>
+			</div>
+		</footer>
 	</body>
 </html>
