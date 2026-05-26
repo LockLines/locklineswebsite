@@ -31,7 +31,13 @@ const pageDescription =
 					<a href="/support/">Support</a>
 					<a href="/privacy-policy/">Privacy</a>
 				</div>
-				<a class="nav-support" href={`mailto:${SUPPORT_EMAIL}`}>Email support</a>
+				<div class="nav-actions">
+					<button class="theme-toggle" type="button" data-theme-toggle aria-label="Theme: Auto" title="Theme: Auto">
+						<span class="theme-icon" aria-hidden="true"></span>
+						<span data-theme-label>Auto</span>
+					</button>
+					<a class="nav-support" href={`mailto:${SUPPORT_EMAIL}`}>Email support</a>
+				</div>
 			</nav>
 		</header>
 
