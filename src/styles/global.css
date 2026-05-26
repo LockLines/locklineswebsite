@@ -304,16 +304,6 @@ h1 {
 	color: var(--ink);
 }
 
-.button.disabled {
-	cursor: default;
-}
-
-.store-note {
-	margin-top: 14px;
-	color: var(--muted);
-	font-size: 0.91rem;
-}
-
 .hero-shot {
 	padding: 12px;
 	border: 1px solid rgba(255, 255, 255, 0.72);

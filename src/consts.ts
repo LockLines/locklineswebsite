@@ -3,9 +3,8 @@ export const SITE_DESCRIPTION =
 	"LockLines is a macOS app for designing plain-text lock screen messages that fit the small message area.";
 
 export const SUPPORT_EMAIL = "support@locklines.app";
-export const APP_STORE_ID = "6772349545";
-export const APP_STORE_URL = `https://apps.apple.com/app/id${APP_STORE_ID}`;
-export const APP_STORE_APPROVED = false;
+export const APP_STORE_URL =
+	"https://apps.apple.com/app/apple-store/id6772349545?pt=127627850&ct=www&mt=8";
 
 export const SCREENSHOTS = {
 	intro: "/screenshots/locklines-intro.png",
@@ -49,7 +48,7 @@ export const FAQ_ITEMS = [
 	{
 		question: "Is LockLines available on the Mac App Store?",
 		answer:
-			"The Mac App Store listing is pending Apple approval. The app id is 6772349545, and this site is already wired for the App Store URL once the listing is live.",
+			"Yes. LockLines is available on the Mac App Store. The download link is on the LockLines homepage.",
 	},
 	{
 		question: "How do I get help?",

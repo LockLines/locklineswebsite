@@ -1,8 +1,6 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
 import {
-	APP_STORE_APPROVED,
-	APP_STORE_ID,
 	APP_STORE_URL,
 	FAQ_ITEMS,
 	SITE_TITLE,
@@ -72,15 +70,9 @@ const pageDescription =
 
 			<section class="shell app-store-note">
 				<h2>Mac App Store status</h2>
+				<p>LockLines is available on the Mac App Store.</p>
 				<p>
-					{
-						APP_STORE_APPROVED
-							? "LockLines is available on the Mac App Store."
-							: "LockLines is pending Apple approval, so the public listing may not open yet."
-					}
-				</p>
-				<p>
-					App id: {APP_STORE_ID}. Future listing URL: <a href={APP_STORE_URL}>{APP_STORE_URL}</a>.
+					<a href={APP_STORE_URL}>View LockLines on the Mac App Store</a>.
 				</p>
 			</section>
 		</main>
