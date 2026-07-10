@@ -7,10 +7,11 @@ export const APP_STORE_URL =
 	"https://apps.apple.com/app/apple-store/id6772349545?pt=127627850&ct=www&mt=8";
 
 export const SCREENSHOTS = {
-	intro: "/screenshots/locklines-intro.png",
-	visible: "/screenshots/locklines-visible.png",
-	scroll: "/screenshots/locklines-scroll.png",
-	copy: "/screenshots/locklines-copy.png",
+	intro: "/screenshots/locklines-intro.jpg",
+	visible: "/screenshots/locklines-visible.jpg",
+	scroll: "/screenshots/locklines-scroll.jpg",
+	copy: "/screenshots/locklines-copy.jpg",
+	themes: "/screenshots/locklines-themes.jpg",
 };
 
 export const DEVELOPER = {
